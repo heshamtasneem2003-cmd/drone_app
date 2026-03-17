@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "646511139077",
+    "project_id": "first-aid-app-b5c18",
+    "storage_bucket": "first-aid-app-b5c18.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:646511139077:android:1aec0da0cfe6dbe88f3f6c",
+        "android_client_info": {
+          "package_name": "com.example.graduation_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5fye5CWszWJ7e-JLfSQxJnsWOW6uTImo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
