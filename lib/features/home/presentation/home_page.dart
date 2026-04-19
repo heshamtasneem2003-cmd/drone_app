@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/core/app.dart';
+import 'package:graduation_project/features/splash/presentation/splash_page.dart'; 
+import 'package:firebase_auth/firebase_auth.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -8,7 +11,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // متغير عشان نخزن رقم الكارت اللي دوسنا عليه حالياً
   int? selectedIndex;
 
   @override
@@ -32,7 +34,6 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(top: 50, left: 20, right: 20, bottom: 25),
               decoration: const BoxDecoration(
                 color: Color.fromARGB(255, 224, 55, 43),
-                //Color(0xff76545D),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(30),
                   bottomRight: Radius.circular(30),
@@ -42,10 +43,32 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Icon(Icons.menu, color: Colors.white),
-                      Text("الإسعافات الأولية", style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold)),
-                      Icon(Icons.notifications_none, color: Colors.white),
+                    children: [
+                      
+                      IconButton(
+                        icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 0, 0, 0)),
+                        onPressed: () {
+                          Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context) => const AppWidget()),
+                          );
+                        },
+                      ),
+                      const Text(
+                        "الإسعافات الأولية", 
+                        style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold)
+                      ),
+                      IconButton(
+                         icon:const Icon(Icons.logout , color: Color.fromARGB(255, 0, 0, 0),),
+                         onPressed: () async {
+                          await FirebaseAuth.instance.signOut();
+                          if (context.mounted) {
+                            Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(builder: (context)=> const SplashPage()),
+                              (Route<dynamic> route) =>false,
+                            );
+                          }
+                         },
+                         ), 
                     ],
                   ),
                   const SizedBox(height: 20),
@@ -64,7 +87,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // --- زر طوارئ SOS ---
+            // --- باقي الكود كما هو تماماً ---
             Transform.translate(
               offset: const Offset(0, -15),
               child: Padding(
@@ -94,7 +117,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // --- أرقام الطوارئ ---
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -116,7 +138,6 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            // --- Grid الإسعافات (التعديل الجديد هنا) ---
             Padding(
               padding: const EdgeInsets.all(20),
               child: GridView.count(
@@ -125,11 +146,11 @@ class _HomePageState extends State<HomePage> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 15,
                 mainAxisSpacing: 15,
-                childAspectRatio: 1.0, // جعل الكارت مربع عشان الأيقونة تتوسطه
+                childAspectRatio: 1.0, 
                 children: [
-                  _buildAidCard(0, "الكسور", Icons.medication_outlined, const Color.fromARGB(255, 152, 187, 211)), // أزرق فاتح),
-                  _buildAidCard(1, "الجروح", Icons.healing_outlined, const Color.fromARGB(255, 212, 160, 168)),   // أحمر فاتح),
-                  _buildAidCard(2, "الحروق", Icons.whatshot_outlined, const Color.fromARGB(255, 227, 192, 136)),  // برتقالي فاتح),
+                  _buildAidCard(0, "الكسور", Icons.medication_outlined, const Color.fromARGB(255, 152, 187, 211)),
+                  _buildAidCard(1, "الجروح", Icons.healing_outlined, const Color.fromARGB(255, 212, 160, 168)),
+                  _buildAidCard(2, "الحروق", Icons.whatshot_outlined, const Color.fromARGB(255, 227, 192, 136)),
                   _buildAidCard(3, "الاختناق", Icons.air_outlined, const Color.fromARGB(255, 160, 207, 161)),
                   _buildAidCard(4, "الصدمة", Icons.psychology_outlined, const Color.fromARGB(255, 208, 169, 214)),
                   _buildAidCard(5, "التسمم", Icons.warning_amber_outlined, const Color.fromARGB(255, 246, 235, 142)),
@@ -143,19 +164,16 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  // ودجت كروت الإسعافات مع تأثير اللمس وتغيير اللون
   Widget _buildAidCard(int index, String title, IconData iconData, Color activeColor) {
     bool isSelected = selectedIndex == index;
-
     return GestureDetector(
       onTap: () {
         setState(() {
-          selectedIndex = index; // تغيير الحالة عند الضغط
+          selectedIndex = index;
         });
       },
       child: Container(
         decoration: BoxDecoration(
-          // اللون يتغير لو دوسنا عليه، وإلا يفضل أبيض
           color: isSelected ? activeColor : Colors.white,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: Colors.black, width: 0.8),
@@ -164,7 +182,7 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // توسيط المحتوى عمودياً
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
               iconData,

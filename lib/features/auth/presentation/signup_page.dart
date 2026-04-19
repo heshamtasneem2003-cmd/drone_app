@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/features/home/presentation/home_page.dart';
 import 'package:graduation_project/widgets/auth_text_field.dart';
 import 'package:graduation_project/widgets/action_button.dart';
 import 'package:graduation_project/widgets/emergency_button.dart';
+import 'package:graduation_project/features/auth/presentation/form_page.dart';
 
 class SignupPage extends StatelessWidget {
   const SignupPage({super.key});
@@ -45,7 +45,7 @@ class SignupPage extends StatelessWidget {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const HomePage()),
+                    MaterialPageRoute(builder: (context) => const FormPage()),
                   );
                 },
               ),

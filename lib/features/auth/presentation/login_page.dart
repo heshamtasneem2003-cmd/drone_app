@@ -3,10 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:graduation_project/features/auth/presentation/signup_page.dart';
 import 'package:graduation_project/features/auth/presentation/forgot_password_page.dart';
-import 'package:graduation_project/features/home/presentation/home_page.dart';
 import 'package:graduation_project/widgets/auth_text_field.dart';
 import 'package:graduation_project/widgets/action_button.dart';
 import 'package:graduation_project/widgets/emergency_button.dart';
+import 'package:graduation_project/features/auth/presentation/form_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
+          MaterialPageRoute(builder: (context) => const FormPage()),
         );
       }
     } catch (e) {
@@ -75,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
       if (mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HomePage()),
+          MaterialPageRoute(builder: (context) => const FormPage()),
         );
       }
     } on FirebaseAuthException catch (e) {
