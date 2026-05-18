@@ -213,6 +213,7 @@ class _HomePageState extends State<HomePage> {
                           icon: Icons.personal_injury,
                           title: "الكسور",
                           subtitle: "كيفية التعامل مع الكسور والإلتواءات",
+                          
                           normalColor: Colors.white,
                           activeColor: Color(0xFFD4EAFD),
                           iconColor: Colors.blue,
@@ -593,8 +594,9 @@ class EmergencySectionCard extends StatefulWidget {
     required this.activeColor,
     required this.iconColor,
     required this.onTap,
+    this.subtitleStyle,
   });
-
+  final TextStyle? subtitleStyle;
   @override
   State<EmergencySectionCard> createState() => _EmergencySectionCardState();
 }
@@ -644,7 +646,7 @@ class _EmergencySectionCardState extends State<EmergencySectionCard> {
               const SizedBox(height: 4),
               Text(
                 widget.subtitle,
-                style: TextStyle(fontSize: 10, color: Colors.grey[600]),
+                style: TextStyle(fontSize: 15, color: const Color.fromARGB(255, 95, 94, 94)),
                 textAlign: TextAlign.center,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,

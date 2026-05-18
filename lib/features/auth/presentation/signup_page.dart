@@ -22,7 +22,7 @@ class SignupPage extends StatelessWidget {
       },
     ),
     title: const Text(
-      'Sign up', 
+      'تسجيل ', 
       style: TextStyle(
         color: Color.fromARGB(255, 0, 0, 0), 
         fontWeight: FontWeight.w900, 
@@ -49,23 +49,23 @@ class SignupPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 20),
-              const AuthTextField(label: 'First Name', icon: Icons.person),
+              const AuthTextField(label: 'الأسم الأول', icon: Icons.person),
               const SizedBox(height: 25),
-              const AuthTextField(label: 'Last Name', icon: Icons.person),
+              const AuthTextField(label: 'الأسم الأخير', icon: Icons.person),
               const SizedBox(height: 25),
               const AuthTextField(
-                label: 'Password',
+                label: 'كلمة المرور',
                 icon: Icons.lock,
                 obscureText: true,
               ),
               const SizedBox(height: 25),
               const AuthTextField(
-                label: 'Confirm Password',
+                label: 'تأكيد كلمة المرور',
                 icon: Icons.lock,
                 obscureText: true,
               ),
               const SizedBox(height: 25),
-              const AuthTextField(label: 'Email', icon: Icons.email),
+              const AuthTextField(label: 'الأيميل', icon: Icons.email),
               const SizedBox(height: 40),
 
               // استبدلي الـ ActionButton بالجزء ده بالظبط
@@ -101,7 +101,7 @@ Center(
         ],
       ),
       child: const Text(
-        'Sign up',
+        'تسجيل',
         style: TextStyle(
           color: Colors.white,
           fontSize: 18,
@@ -182,7 +182,7 @@ Center(
                           ),
                           const SizedBox(width: 15),
                           const Text(
-                            'Emergency Call',
+                            'الأتصال بالطوارئ',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

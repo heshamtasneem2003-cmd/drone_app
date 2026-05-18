@@ -128,6 +128,7 @@ class EmergencySectionCard extends StatefulWidget {
   final Color activeColor;
   final Color iconColor;
   final VoidCallback? onTap;
+  final TextStyle? subtitleStyle;
 
   const EmergencySectionCard({
     super.key,
@@ -138,6 +139,7 @@ class EmergencySectionCard extends StatefulWidget {
     required this.activeColor,
     required this.iconColor,
     this.onTap,
+    this.subtitleStyle,
   });
 
   @override
@@ -221,7 +223,8 @@ class _EmergencySectionCardState extends State<EmergencySectionCard> {
                 widget.subtitle,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                   color:
                       isSelected ? Colors.grey.shade600 : Colors.grey.shade600,
                 ),

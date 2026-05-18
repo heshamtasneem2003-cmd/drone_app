@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
       },
     ),
     title: const Text(
-      'Login', 
+      " تسجيل الدخول", 
       style: TextStyle(
         color: Color.fromARGB(255, 0, 0, 0), 
         fontWeight: FontWeight.w900, 
@@ -140,14 +140,14 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 70),
               AuthTextField(
                 controller: _emailController,
-                label: 'E-mail',
+                label: " الأيميل",
                 icon: Icons.mail,
                 obscureText: false,
               ),
               const SizedBox(height: 30),
               AuthTextField(
                 controller: _passwordController,
-                label: 'Password',
+                label: "كلمة المرور",
                 icon: Icons.lock,
                 obscureText: true,
               ),
@@ -188,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
       child: _isLoading 
           ? const CircularProgressIndicator(color: Colors.white) 
           : const Text(
-              'Login',
+              " تسجيل الدخول",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -211,7 +211,7 @@ class _LoginPageState extends State<LoginPage> {
                     );
                   },
                   child: const Text(
-                    " Forget Password?",
+                    " هل نسيت كلمة المرور؟",
                     style: TextStyle(
                       color: Color(0xFF910C0C),
                       fontWeight: FontWeight.bold,
@@ -225,7 +225,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    " Don't Have an Account?",
+                    " ليس لدي حساب",
                     style: TextStyle(fontSize: 20 , color: Color(0xFFD11212)),
                   ),
                   const SizedBox(width: 5),
@@ -239,7 +239,7 @@ class _LoginPageState extends State<LoginPage> {
                       );
                     },
                     child: const Text(
-                      'Sign Up',
+                      'تسجيل ',
                       style: TextStyle(
                         color: Color(0xFF910C0C),
                         fontWeight: FontWeight.bold,
@@ -254,7 +254,7 @@ class _LoginPageState extends State<LoginPage> {
               InkWell(
                 onTap: _signInWithGoogle,
                 child: const Text(
-                  'Continue with Google',
+                  'تسجيل الدخول بجوجل',
                   style: TextStyle(
                     color: Color(0xFF910C0C),
                     fontWeight: FontWeight.bold,
@@ -337,7 +337,7 @@ Padding(
                           ),
                           const SizedBox(width: 15),
                           const Text(
-                            'Emergency Call',
+                            'الأتصال بالطوارئ',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

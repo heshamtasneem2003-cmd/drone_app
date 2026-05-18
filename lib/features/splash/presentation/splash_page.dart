@@ -149,7 +149,7 @@ class SplashPage extends StatelessWidget {
                       ],
                     ),
                     child: const Text(
-                      'Start',
+                      " أبدأ",
                       style: TextStyle(
                         color: Color.fromARGB(255, 0, 0, 0),
                         fontSize: 24,
@@ -234,7 +234,7 @@ class SplashPage extends StatelessWidget {
                           ),
                           const SizedBox(width: 15),
                           const Text(
-                            'Emergency Call',
+                            'الأتصال بالطوارئ',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

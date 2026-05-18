@@ -62,7 +62,7 @@ class Firstaiddetailspage1 extends StatelessWidget {
                                 Text(
                                   "كيفية التعامل مع الحروق بمختلف درجاتها",
                                   style: TextStyle(
-                                      fontSize: 13, color: Colors.black54),
+                                      fontSize: 15, color: Colors.black54),
                                       textAlign: TextAlign.right,
                                 ),
                               ],
@@ -264,7 +264,7 @@ class Firstaiddetailspage1 extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [ // <-- دي اللي كانت ناقصة يا نيمو!
+        children: [ 
           Expanded( 
             child: Text(
               text,

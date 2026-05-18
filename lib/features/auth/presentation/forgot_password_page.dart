@@ -20,7 +20,7 @@ class ForgotPasswordPage extends StatelessWidget {
       },
     ),
     title: const Text(
-      'Forgot Password', 
+      'نسيت كلمة المرور', 
       style: TextStyle(
         color: Color.fromARGB(255, 0, 0, 0), 
         fontWeight: FontWeight.w900, 
@@ -47,7 +47,7 @@ class ForgotPasswordPage extends StatelessWidget {
             children: [
               SizedBox(height: 100),
               Text(
-                'Reset Your Password',
+                'اعادة تعيين كلمة المرور الخاصه',
                 style: TextStyle(
                   fontSize: 26,
                   fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class ForgotPasswordPage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                'Enter your registered email address below to receive password reset instructions.',
+                'أدخل عنوان بريدك الألكتروني المسجل أدناه لتلقي تعليمات أعادة تعيين كلمة المرور',
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16, color: Colors.grey[700]),
               ),
@@ -97,7 +97,7 @@ Center(
         ],
       ),
       child: const Text(
-        'Reset Password',
+        'اعادة تعيين كلمة المرور',
         style: TextStyle(
           color: Colors.white,
           fontSize: 18,
@@ -178,7 +178,7 @@ Center(
                           ),
                           const SizedBox(width: 15),
                           const Text(
-                            'Emergency Call',
+                            'الأتصال بالطوارئ',
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

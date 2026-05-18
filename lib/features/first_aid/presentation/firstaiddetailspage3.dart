@@ -56,7 +56,7 @@ class Firstaiddetailspage3 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "خطوات إيقاف النزيف وتنظيف الجروح",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage3 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الإسعافات الأولية", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("خطوات إيقاف النزيف وتنظيف الجروح", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "اغسل يديك جيداً بالماء والصابون أو ارتدِ قفازات طبية معقمة"),
                           _buildStepItem("2", "إذا كان هناك نزيف اضغط مباشرة على الجرح بقطعة قماش نظيفة"),
