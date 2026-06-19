@@ -56,7 +56,7 @@ class Firstaiddetailspage5 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "كيفية التعامل مع حالات الصدمة الناتجة عن الإصابات",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage5 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الإسعافات الأولية", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("كيفية التعامل مع حالات الصدمة الناتجة عن الإصابات", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "اجعل المصاب يستلقي على ظهره مع رفع الساقين (حوالي 30 سم)"),
                           _buildStepItem("2", "حافظ على دفء المصاب بتغطيته ببطانية أو ملابس"),

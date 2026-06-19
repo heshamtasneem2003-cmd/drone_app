@@ -280,7 +280,7 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
           child: Column(
             children: [
               _buildMapSection(),
-              const SizedBox(height: 15),
+              const SizedBox(height: 25),
               TextButton.icon(
                 onPressed: _determinePosition,
                 icon: const Icon(Icons.gps_fixed,
@@ -289,7 +289,7 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold)),
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 50),
               // حقل الموقع مربوط بالكونترولر ومقفول للكتابة اليدوية
               _buildModernTextField(
                 hint: "موقعك الحالي",
@@ -307,7 +307,7 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
               _buildModernDropdown(
                 hint: "نوع الإصابة",
                 icon: Icons.medical_services,
-                items: ["حروق", "كسور", "جروح", "اختناق", "أزمة قلبية", "صدمة", "تسمم", "غيبوبة السكر", "اصابة عين", "ضربة شمس"],
+                items: ["حروق", "كسور", "جروح", "اختناق", "أزمة قلبية", "صدمة", "تسمم", "غيبوبة السكر", "اصابة عين", "ضربة شمس" , " أخري"],
                 value: selectedInjuryType,
                 onChanged: (val) => setState(() => selectedInjuryType = val),
               ),
@@ -326,7 +326,7 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                 hint: "ملاحظات إضافية",
                 icon: Icons.note_add_outlined,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 100),
               _buildSubmitButton(),
             ],
           ),

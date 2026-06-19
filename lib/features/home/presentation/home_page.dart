@@ -173,7 +173,7 @@ class _HomePageState extends State<HomePage> {
 
                   // --- كروت أرقام الطوارئ (بالأنيميشن) ---
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 70),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

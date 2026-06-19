@@ -56,7 +56,7 @@ class Firstaiddetailspage4 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "التعامل مع حالات الاختناق وانسداد مجرى الهواء",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage4 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الإسعافات الأولية", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("التعامل مع حالات الاختناق وانسداد مجرى الهواء", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "قف خلف المصاب وضع ذراعيك حول خصره"),
                           _buildStepItem("2", "اقبض إحدى يديك واضغطها على بطن المصاب فوق السرة مباشرة"),

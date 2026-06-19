@@ -56,7 +56,7 @@ class Firstaiddetailspage12 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "الأعراض وخطوات الإسعاف الفوري للنوبات القلبية",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage12 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الإسعاف الفوري", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("خطوات الإسعاف الفوري للأزمة القلبية", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "اتصل بالإسعاف فوراً (123) عند الشك في وجود أزمة قلبية"),
                           _buildStepItem("2", "ساعد المصاب على الجلوس في وضع مريح (نصف جالساً) مع دعم الظهر"),

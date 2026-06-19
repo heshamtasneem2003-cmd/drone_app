@@ -56,7 +56,7 @@ class Firstaiddetailspage11 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "خطوات الإنعاش القلبي الرئوي (CPR) لإنقاذ حياة المصاب",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage11 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الـ CPR المعتمدة", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("خطوات ال (CPR) لإنقاذ حياة المصاب", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "تأكد من أمان المكان حولك وحول المصاب أولاً"),
                           _buildStepItem("2", "تحقق من وعي المصاب بالتربيت على كتفه والمناداة بصوت عالٍ"),

@@ -11,7 +11,7 @@ class SignupPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-  preferredSize: const Size.fromHeight(100.0), // نفس الارتفاع بتاع صفحة اللوجين
+  preferredSize: const Size.fromHeight(140.0), // نفس الارتفاع بتاع صفحة اللوجين
   child: AppBar(
     // سهم الرجوع
     leading: IconButton(
@@ -24,9 +24,10 @@ class SignupPage extends StatelessWidget {
     title: const Text(
       'تسجيل ', 
       style: TextStyle(
-        color: Color.fromARGB(255, 0, 0, 0), 
+        color: Color.fromARGB(255, 255, 235, 235), 
         fontWeight: FontWeight.w900, 
-        fontSize: 30
+        fontSize: 30,
+        letterSpacing: 1.2,
       )
     ),
     centerTitle: true,
@@ -48,25 +49,25 @@ class SignupPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 60),
               const AuthTextField(label: 'الأسم الأول', icon: Icons.person),
-              const SizedBox(height: 25),
+              const SizedBox(height: 40),
               const AuthTextField(label: 'الأسم الأخير', icon: Icons.person),
-              const SizedBox(height: 25),
+              const SizedBox(height: 40),
               const AuthTextField(
                 label: 'كلمة المرور',
                 icon: Icons.lock,
                 obscureText: true,
               ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 40),
               const AuthTextField(
                 label: 'تأكيد كلمة المرور',
                 icon: Icons.lock,
                 obscureText: true,
               ),
-              const SizedBox(height: 25),
-              const AuthTextField(label: 'الأيميل', icon: Icons.email),
               const SizedBox(height: 40),
+              const AuthTextField(label: 'الأيميل', icon: Icons.email),
+              const SizedBox(height: 100),
 
               // استبدلي الـ ActionButton بالجزء ده بالظبط
 Center(
@@ -111,7 +112,7 @@ Center(
     ),
   ),
 ),
-              const SizedBox(height: 60),
+              const SizedBox(height: 110),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: InkWell(

@@ -56,7 +56,7 @@ class Firstaiddetailspage7 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "كيفية التصرف عند انخفاض أو ارتفاع سكر الدم المفاجئ",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage7 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الإسعافات الأولية", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("كيفية التصرف عند انخفاض أو ارتفاع سكر الدم المفاجئ", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "تأكد من درجة وعي المصاب وقدرته على البلع"),
                           _buildStepItem("2", "إذا كان واعياً، أعطه شيئاً سكرياً فوراً (عصير، قطعة حلوى، ملعقة سكر)"),

@@ -97,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-  preferredSize: const Size.fromHeight(100.0), // عشان ندي مساحة للارتفاع
+  preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.15), // عشان ندي مساحة للارتفاع
   child: AppBar(
     // 1. سهم الرجوع
     leading: IconButton(
@@ -110,12 +110,14 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
     ),
+    
     title: const Text(
       " تسجيل الدخول", 
       style: TextStyle(
-        color: Color.fromARGB(255, 0, 0, 0), 
+        color: Color.fromARGB(255, 255, 246, 246), 
         fontWeight: FontWeight.w900, 
-        fontSize: 30
+        fontSize: 30,
+        letterSpacing: 1.2,
       )
     ),
     centerTitle: true,
@@ -137,21 +139,21 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 70),
+              const SizedBox(height: 80),
               AuthTextField(
                 controller: _emailController,
                 label: " الأيميل",
                 icon: Icons.mail,
                 obscureText: false,
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 50),
               AuthTextField(
                 controller: _passwordController,
                 label: "كلمة المرور",
                 icon: Icons.lock,
                 obscureText: true,
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 80),
               _isLoading
                   ? const CircularProgressIndicator(color: Color(0xff76545D))
                   : // 1. هنستخدم Center عشان الزرار يبقى في النص بالظبط
@@ -198,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
     ),
   ),
 ),
-              const SizedBox(height: 25),
+              const SizedBox(height: 40),
               Align(
                 alignment: Alignment.centerRight,
                 child: InkWell(
@@ -220,7 +222,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -263,7 +265,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              const SizedBox(height: 80),
+              const SizedBox(height: 200),
 
 
               // زرار الطوارئ (Emergency Call) بالتأثيرات وكود الاتصال

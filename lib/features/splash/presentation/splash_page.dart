@@ -13,7 +13,7 @@ class SplashPage extends StatelessWidget {
       backgroundColor: Colors.white,
       // --- الـ AppBar بتاعك زي ما هو بالظبط من غير تغيير ---
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(110.0),
+        preferredSize: const Size.fromHeight(150.0),
         child: AppBar(
           title: const Text(
             " نظام الطوارئ السريع ",
@@ -27,13 +27,13 @@ class SplashPage extends StatelessWidget {
           centerTitle: true,
           backgroundColor: const Color.fromARGB(255, 174, 12, 12),
           elevation: 8,
-          shadowColor: const Color.fromARGB(255, 174, 12, 12).withOpacity(0.7),
+          shadowColor: const Color.fromARGB(255, 174, 12, 12).withOpacity(0.9),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(50),
             ),
           ),
-          toolbarHeight: 100.0,
+          toolbarHeight: 130.0,
           actions: [
             IconButton(
               icon: const Icon(Icons.info_outline, color: Colors.white70),
@@ -81,9 +81,9 @@ class SplashPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const SizedBox(height: 40),
+              const SizedBox(height: 220),
               const CircleAvatar(
                 radius: 112,
                 backgroundColor: Colors.white,
@@ -92,7 +92,7 @@ class SplashPage extends StatelessWidget {
                   backgroundImage: AssetImage('images/Doroun.png'),
                 ),
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 100),
               const Text(
                 ' ',
                 style: TextStyle(

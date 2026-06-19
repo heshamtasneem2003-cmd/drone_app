@@ -48,7 +48,7 @@ class Firstaiddetailspage9 extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: const [
                                   Text(
-                                    "ضربات الشمس",
+                                    "ضربة الشمس",
                                     style: TextStyle(
                                       fontSize: 26,
                                       fontWeight: FontWeight.bold,
@@ -56,7 +56,7 @@ class Firstaiddetailspage9 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "كيفية التعامل مع الإجهاد الحراري وضربات الشمس",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage9 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الإسعافات الأولية", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("كيفية التعامل مع الإجهاد الحراري وضربات الشمس", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "انقل المصاب فوراً إلى مكان بارد أو مظلل"),
                           _buildStepItem("2", "انزع الملابس الزائدة عن المصاب لتسهيل تبريد الجسم"),

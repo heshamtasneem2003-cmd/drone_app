@@ -56,7 +56,7 @@ class Firstaiddetailspage8 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "خطوات التعامل مع دخول أجسام غريبة أو مواد كيميائية للعين",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage8 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الإسعافات الأولية", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("خطوات التعامل مع دخول أجسام غريبة أو مواد كيميائية للعين", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "اغسل يديك جيداً قبل لمس منطقة العين"),
                           _buildStepItem("2", "في حال دخول مواد كيميائية، اغسل العين فوراً بماء جاري نظيف لمدة 15 دقيقة"),

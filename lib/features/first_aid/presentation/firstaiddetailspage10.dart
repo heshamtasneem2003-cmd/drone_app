@@ -56,7 +56,7 @@ class Firstaiddetailspage10 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "دليلك لتجهيز حقيبة الطوارئ المنزلية والمحمولة",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage10 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("المستلزمات الأساسية", Icons.inventory_2_outlined, Colors.green),
+                          _buildSectionHeader("دليلك لتجهيز حقيبة الطوارئ المنزلية والمحمولة", Icons.inventory_2_outlined, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "شاش معقم ولفافات ضاغطة بأحجام مختلفة"),
                           _buildStepItem("2", "لاصق طبي (بلاستر) ومسحات طبية كحولية"),

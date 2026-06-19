@@ -56,7 +56,7 @@ class Firstaiddetailspage6 extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    "كيفية التعامل مع حالات التسمم المختلفة",
+                                    "",
                                     style: TextStyle(fontSize: 13, color: Colors.black54),
                                   ),
                                 ],
@@ -103,7 +103,7 @@ class Firstaiddetailspage6 extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          _buildSectionHeader("خطوات الإسعافات الأولية", Icons.check_circle_outline, Colors.green),
+                          _buildSectionHeader("كيفية التعامل مع حالات التسمم المختلفة", Icons.check_circle_outline, Colors.green),
                           const SizedBox(height: 20),
                           _buildStepItem("1", "حاول تحديد نوع المادة السامة والكمية التي تم تناولها"),
                           _buildStepItem("2", "اتصل بمركز السموم أو الإسعاف فوراً وأبلغهم بالتفاصيل"),
