@@ -9,6 +9,8 @@ class ForgotPasswordPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+  double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
   preferredSize: const Size.fromHeight(100.0), // الارتفاع اللي بيسمح بالانحناء

@@ -29,12 +29,14 @@ class _FormPageState extends State<FormPage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+  double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       // اللون العنابي اللي إنتي مختاراه فوق
       backgroundColor: const Color.fromARGB(255, 156, 19, 4),
       body: Column(
         children: [
-          const SizedBox(height: 200), // المسافة اللي إنتي عاملاها
+          SizedBox(height: screenHeight * 0.2), //  المسافة اللي إنتي عاملاها
           Expanded(
             child: Container(
               width: double.infinity,
@@ -157,7 +159,7 @@ const SizedBox(height: 20),
                           onChanged: (v) => setState(() => selectedGender = v),
                         ),
                         const Text("male", style: TextStyle(fontWeight: FontWeight.bold , fontSize: 20)),
-                        const SizedBox(width: 40),
+                        SizedBox(height: screenHeight * 0.04), // 👈 بياخد 4% من طول الشاشة بالظبط,
                         Radio<int>(
                           value: 2,
                           groupValue: selectedGender,
@@ -216,7 +218,7 @@ const SizedBox(height: 20),
     ),
   ),
 ),
-                    const SizedBox(height: 40),
+                    SizedBox(height: screenHeight * 0.04), // 👈 بياخد 4% من طول الشاشة بالظبط,
                   ],
                 ),
               ),

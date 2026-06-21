@@ -65,6 +65,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+  double screenWidth = MediaQuery.of(context).size.width;
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -173,7 +175,7 @@ class _HomePageState extends State<HomePage> {
 
                   // --- كروت أرقام الطوارئ (بالأنيميشن) ---
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 70),
+                    padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.05),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

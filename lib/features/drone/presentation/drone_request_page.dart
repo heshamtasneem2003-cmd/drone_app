@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class DroneRequestPage extends StatefulWidget {
   const DroneRequestPage({super.key});
@@ -10,12 +12,12 @@ class DroneRequestPage extends StatefulWidget {
 }
 
 class _DroneRequestPageState extends State<DroneRequestPage> {
-  // --- المتغيرات الأساسية ---
-  LatLng? pickedLocation; 
+  LatLng? pickedLocation;
   GoogleMapController? mapController;
-  // المسؤول عن الكتابة داخل خانة "موقعك الحالي"
-  TextEditingController locationController = TextEditingController(); 
-  
+  TextEditingController locationController = TextEditingController();
+  TextEditingController allergiesController = TextEditingController();
+  TextEditingController notesController = TextEditingController();
+
   LatLng _initialPosition = const LatLng(30.0444, 31.2357);
   Set<Marker> _markers = {};
 
@@ -23,13 +25,12 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
   String? selectedInjuryType;
   String? selectedBloodType;
 
-  // --- دالة تحديد الموقع تلقائياً ---
   Future<void> _determinePosition() async {
     Position position = await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.high);
     setState(() {
       _initialPosition = LatLng(position.latitude, position.longitude);
-      pickedLocation = _initialPosition; 
+      pickedLocation = _initialPosition;
       _markers = {
         Marker(
           markerId: const MarkerId("my_location"),
@@ -37,14 +38,64 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
           infoWindow: const InfoWindow(title: "موقعك الحالي"),
         ),
       };
-      // ملء الخانة فوراً بالإحداثيات عند التحديد التلقائي
       locationController.text =
           "${position.latitude.toStringAsFixed(4)}, ${position.longitude.toStringAsFixed(4)}";
       mapController?.animateCamera(CameraUpdate.newLatLng(_initialPosition));
     });
   }
 
-  // --- تصميم قسم الخريطة مع زرار التأكيد ---
+  Future<void> _submitDroneRequest() async {
+    if (pickedLocation == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("من فضلك حدد موقعك أولاً")),
+      );
+      return;
+    }
+
+    if (selectedInjuredCount == null || selectedInjuryType == null || selectedBloodType == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("من فضلك اكمل كل البيانات")),
+      );
+      return;
+    }
+
+    try {
+      final response = await http.post(
+        Uri.parse("https://mariam62.pythonanywhere.com/mobile/request-drone"),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode({
+          "user_id": 1,
+          "latitude": pickedLocation!.latitude,
+          "longitude": pickedLocation!.longitude,
+          "location_text": locationController.text,
+          "injured_count": selectedInjuredCount,
+          "injury_type": selectedInjuryType,
+          "blood_type": selectedBloodType,
+          "allergies": allergiesController.text,
+          "notes": notesController.text,
+        }),
+      );
+
+      final data = jsonDecode(response.body);
+      if (data["success"] == true) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("تم إرسال طلب الدرون بنجاح!"),
+            backgroundColor: Colors.green,
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("حدث خطأ، حاول مرة أخرى")),
+        );
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("تعذر الاتصال بالسيرفر")),
+      );
+    }
+  }
+
   Widget _buildMapSection() {
     return Container(
       height: 220,
@@ -81,7 +132,6 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                 });
               },
             ),
-            // زرار التأكيد الأحمر العايم فوق الخريطة
             Positioned(
               bottom: 10,
               left: 10,
@@ -90,7 +140,6 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                 onPressed: () {
                   if (pickedLocation != null) {
                     setState(() {
-                      // نقل الإحداثيات من الخريطة للخانة اللي تحت
                       locationController.text =
                           "${pickedLocation!.latitude.toStringAsFixed(4)}, ${pickedLocation!.longitude.toStringAsFixed(4)}";
                     });
@@ -119,7 +168,6 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
     );
   }
 
-  // --- تصميم حقل الإدخال الموحد (مع خاصية القراءة فقط) ---
   Widget _buildModernTextField({
     required String hint,
     required IconData icon,
@@ -153,12 +201,13 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                 textAlign: TextAlign.right,
                 decoration: InputDecoration(
                   hintText: hint,
-                  hintStyle: const TextStyle(color: Color.fromARGB(255, 0, 0, 0), fontSize: 14),
+                  hintStyle: const TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0), fontSize: 14),
                   prefixIcon: Icon(icon,
                       color: const Color.fromARGB(255, 209, 18, 18)),
                   border: InputBorder.none,
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+                  contentPadding: const EdgeInsets.symmetric(
+                      vertical: 18, horizontal: 20),
                 ),
               ),
             ),
@@ -168,7 +217,6 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
     );
   }
 
-  // --- تصميم الـ Dropdown ---
   Widget _buildModernDropdown({
     required String hint,
     required IconData icon,
@@ -192,7 +240,8 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                       ? const Color.fromARGB(255, 209, 18, 18).withOpacity(0.3)
                       : Colors.black.withOpacity(0.2),
                   blurRadius: isFocused ? 15 : 10,
-                  offset: isFocused ? const Offset(0, 6) : const Offset(0, 4),
+                  offset:
+                      isFocused ? const Offset(0, 6) : const Offset(0, 4),
                 ),
               ],
             ),
@@ -206,13 +255,15 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                   ),
                   hintText: hint,
                   border: InputBorder.none,
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                  contentPadding:
+                      const EdgeInsets.symmetric(horizontal: 10),
                 ),
                 items: items.map((String item) {
                   return DropdownMenuItem<String>(
                     value: item,
                     child: Align(
-                        alignment: Alignment.centerRight, child: Text(item)),
+                        alignment: Alignment.centerRight,
+                        child: Text(item)),
                   );
                 }).toList(),
                 onChanged: onChanged,
@@ -224,7 +275,6 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
     );
   }
 
-  // --- زرار إرسال الطلب النهائي ---
   Widget _buildSubmitButton() {
     return Container(
       width: double.infinity,
@@ -241,14 +291,12 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
         ],
       ),
       child: ElevatedButton(
-        onPressed: () {
-          // هنا هيتم الربط مع الفايربيز لاحقاً
-        },
+        onPressed: _submitDroneRequest,
         style: ElevatedButton.styleFrom(
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18)),
         ),
         child: const Text("تأكيد وإرسال الطلب",
             style: TextStyle(
@@ -268,15 +316,17 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
         appBar: AppBar(
           backgroundColor: const Color.fromARGB(255, 171, 16, 16),
           title: const Text("طلب الدرون",
-              style:
-                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold)),
           centerTitle: true,
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20)),
+            borderRadius:
+                BorderRadius.vertical(bottom: Radius.circular(20)),
           ),
         ),
         body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
+          padding:
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 25),
           child: Column(
             children: [
               _buildMapSection(),
@@ -287,10 +337,10 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                     color: Color.fromARGB(255, 209, 18, 18)),
                 label: const Text("تحديد موقعي الحالي تلقائياً",
                     style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold)),
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold)),
               ),
               const SizedBox(height: 50),
-              // حقل الموقع مربوط بالكونترولر ومقفول للكتابة اليدوية
               _buildModernTextField(
                 hint: "موقعك الحالي",
                 icon: Icons.map_outlined,
@@ -302,29 +352,41 @@ class _DroneRequestPageState extends State<DroneRequestPage> {
                 icon: Icons.group_add_outlined,
                 items: ["1", "2", "3", "4", "100+"],
                 value: selectedInjuredCount,
-                onChanged: (val) => setState(() => selectedInjuredCount = val),
+                onChanged: (val) =>
+                    setState(() => selectedInjuredCount = val),
               ),
               _buildModernDropdown(
                 hint: "نوع الإصابة",
                 icon: Icons.medical_services,
-                items: ["حروق", "كسور", "جروح", "اختناق", "أزمة قلبية", "صدمة", "تسمم", "غيبوبة السكر", "اصابة عين", "ضربة شمس" , " أخري"],
+                items: [
+                  "حروق", "كسور", "جروح", "اختناق",
+                  "أزمة قلبية", "صدمة", "تسمم",
+                  "غيبوبة السكر", "اصابة عين", "ضربة شمس", "أخري"
+                ],
                 value: selectedInjuryType,
-                onChanged: (val) => setState(() => selectedInjuryType = val),
+                onChanged: (val) =>
+                    setState(() => selectedInjuryType = val),
               ),
               _buildModernDropdown(
-                hint: "فصيلة الدم ",
+                hint: "فصيلة الدم",
                 icon: Icons.bloodtype_outlined,
-                items: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" , "لا أعلم"],
+                items: [
+                  "A+", "A-", "B+", "B-",
+                  "AB+", "AB-", "O+", "O-", "لا أعلم"
+                ],
                 value: selectedBloodType,
-                onChanged: (val) => setState(() => selectedBloodType = val),
+                onChanged: (val) =>
+                    setState(() => selectedBloodType = val),
               ),
               _buildModernTextField(
                 hint: "هل يوجد حساسية من أدوية معينة؟",
                 icon: Icons.announcement_outlined,
+                controller: allergiesController,
               ),
               _buildModernTextField(
                 hint: "ملاحظات إضافية",
                 icon: Icons.note_add_outlined,
+                controller: notesController,
               ),
               const SizedBox(height: 100),
               _buildSubmitButton(),

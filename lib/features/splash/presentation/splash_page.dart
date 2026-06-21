@@ -9,6 +9,8 @@ class SplashPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+  double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       // --- الـ AppBar بتاعك زي ما هو بالظبط من غير تغيير ---
@@ -83,7 +85,7 @@ class SplashPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              const SizedBox(height: 220),
+              SizedBox(height: screenHeight * 0.05), // 👈 بياخد 22% من طول الشاشة بالظبط
               const CircleAvatar(
                 radius: 112,
                 backgroundColor: Colors.white,
@@ -92,7 +94,7 @@ class SplashPage extends StatelessWidget {
                   backgroundImage: AssetImage('images/Doroun.png'),
                 ),
               ),
-              const SizedBox(height: 100),
+              SizedBox(height: screenHeight * 0.1), // 👈 بياخد 22% من طول الشاشة بالظبط,
               const Text(
                 ' ',
                 style: TextStyle(
@@ -161,7 +163,7 @@ class SplashPage extends StatelessWidget {
                 ),
               ),
               
-              const SizedBox(height: 70), // تقليل الـ SizedBox عشان التصميم يبقى ملموم
+              SizedBox(height: screenHeight * 0.05), // 👈 بياخد 22% من طول الشاشة بالظبط, // تقليل الـ SizedBox عشان التصميم يبقى ملموم
 
              // --- زرار Emergency Call المطور ---
               Padding(
@@ -248,7 +250,7 @@ class SplashPage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: screenHeight * 0.04), // 👈 بياخد 22% من طول الشاشة بالظبط,
             ],
           ),
         ),

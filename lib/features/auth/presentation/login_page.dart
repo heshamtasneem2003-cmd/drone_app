@@ -95,6 +95,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+  double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
   preferredSize: Size.fromHeight(MediaQuery.of(context).size.height * 0.15), // عشان ندي مساحة للارتفاع
@@ -139,21 +141,21 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 80),
+              SizedBox(height: screenHeight * 0.06), // 👈 بياخد 5% من طول الشاشة الحالية
               AuthTextField(
                 controller: _emailController,
                 label: " الأيميل",
                 icon: Icons.mail,
                 obscureText: false,
               ),
-              const SizedBox(height: 50),
+              SizedBox(height: screenHeight * 0.05),
               AuthTextField(
                 controller: _passwordController,
                 label: "كلمة المرور",
                 icon: Icons.lock,
                 obscureText: true,
               ),
-              const SizedBox(height: 80),
+              SizedBox(height: screenHeight * 0.08), // 👈 بياخد 8% من طول الشاشة
               _isLoading
                   ? const CircularProgressIndicator(color: Color(0xff76545D))
                   : // 1. هنستخدم Center عشان الزرار يبقى في النص بالظبط
@@ -200,7 +202,7 @@ class _LoginPageState extends State<LoginPage> {
     ),
   ),
 ),
-              const SizedBox(height: 40),
+              SizedBox(height: screenHeight * 0.04), // 👈 بياخد 4% من طول الشاشة
               Align(
                 alignment: Alignment.centerRight,
                 child: InkWell(
@@ -222,7 +224,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: screenHeight * 0.04), // 👈 بياخد 4% من طول الشاشة
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -265,7 +267,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
 
-              const SizedBox(height: 200),
+              SizedBox(height: screenHeight * 0.2), // 👈 بياخد 20% من طول الشاشة بالظبط
 
 
               // زرار الطوارئ (Emergency Call) بالتأثيرات وكود الاتصال

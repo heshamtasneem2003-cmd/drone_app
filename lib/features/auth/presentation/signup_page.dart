@@ -9,6 +9,8 @@ class SignupPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+  double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
   preferredSize: const Size.fromHeight(140.0), // نفس الارتفاع بتاع صفحة اللوجين
@@ -49,25 +51,25 @@ class SignupPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 60),
+              SizedBox(height: screenHeight * 0.06),
               const AuthTextField(label: 'الأسم الأول', icon: Icons.person),
-              const SizedBox(height: 40),
+              SizedBox(height: screenHeight * 0.04),
               const AuthTextField(label: 'الأسم الأخير', icon: Icons.person),
-              const SizedBox(height: 40),
+              SizedBox(height: screenHeight * 0.04),
               const AuthTextField(
                 label: 'كلمة المرور',
                 icon: Icons.lock,
                 obscureText: true,
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: screenHeight * 0.04),
               const AuthTextField(
                 label: 'تأكيد كلمة المرور',
                 icon: Icons.lock,
                 obscureText: true,
               ),
-              const SizedBox(height: 40),
+              SizedBox(height: screenHeight * 0.04),
               const AuthTextField(label: 'الأيميل', icon: Icons.email),
-              const SizedBox(height: 100),
+              SizedBox(height: screenHeight * 0.07),
 
               // استبدلي الـ ActionButton بالجزء ده بالظبط
 Center(
@@ -112,7 +114,7 @@ Center(
     ),
   ),
 ),
-              const SizedBox(height: 110),
+              SizedBox(height: screenHeight * 0.11), // 👈 بياخد 11% من طول الشاشة بالظبط
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: InkWell(
